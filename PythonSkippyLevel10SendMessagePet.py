@@ -221,6 +221,7 @@ def attack_target_then_switch_post():
         broadcast_key_click(VK_1)
         broadcast_key_click(VK_2)
         broadcast_key_click(VK_3)
+        broadcast_key_click(VK_5)
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
     broadcast_key_click(VK_9)
