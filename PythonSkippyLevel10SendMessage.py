@@ -171,13 +171,14 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_clickv(VK_1)
+    broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
+
 def attack_target_then_switch_post():
     broadcast_key_click(VK_1)
     time.sleep(1.8)
@@ -195,8 +196,9 @@ def repeat_keystroke():
         for a in target_windows:
             print(f"W:{a}")
         while True:
-            #attack_target_then_switch()
             attack_target_then_switch_post()
+            #attack_target_then_switch()
+            #attack_target_then_switch_post()
             #attack_same_target_then_switch()
                 
     
