@@ -12,6 +12,7 @@ window_name="World of Warcraft"
 
 useRealKey=False
 
+VK_L = 0x4C
 
 attack_index=0
 
@@ -64,7 +65,6 @@ VK_RIGHT = 0x27    # Right arrow
 VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
-VK_0 = 0x30       # Alphanumeric 1
 VK_1 = 0x31       # Alphanumeric 1
 VK_2 = 0x32       # Alphanumeric 1
 VK_3 = 0x33       # Alphanumeric 1
@@ -74,8 +74,7 @@ VK_6 = 0x36       # Alphanumeric 1
 VK_7 = 0x37       # Alphanumeric 1
 VK_8 = 0x38       # Alphanumeric 1
 VK_9 = 0x39        # Alphanumeric 1
-VK_L = 0x4C 		# Alphanumeric 1
-VK_F = 0x46 		# Alphanumeric 1
+VK_0 = 0x30        # Alphanumeric 1
 
 
 # We will store all the wow window when the script is launch here
@@ -201,41 +200,64 @@ def attack_same_target_then_switch_post():
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
+
+
+def attack_with_toggle( count):
+
+
+    broadcast_key_click(VK_9)
+    broadcast_key_click(VK_TAB)
+    #for i in range(0,count):
+    #    time.sleep(0.05)
+    #   broadcast_key_click(VK_TAB)
+    time.sleep(0.05)
+    broadcast_key_click(VK_1)
+    time.sleep(0.1)
+    broadcast_key_click(VK_2)
+    
+    
 def attack_target_then_switch_post():
     global attack_index
     attack_index+=1
     
-    broadcast_key_click(VK_4)
-
+  
+    
+    if attack_index%demonistbreak==0:
+        broadcast_key_click(demonistid)
+        time.sleep(1)
+        broadcast_key_click(petkey)
         
-    if attack_index%healCount==0:
+    elif attack_index%healCount==0:
         broadcast_key_click(healkey)
         
     elif attack_index%petCount==0:
         broadcast_key_click(petkey)
-
     else:
-        broadcast_key_click(VK_1)
-        broadcast_key_click(VK_2)
-        broadcast_key_click(VK_3)
-        broadcast_key_click(VK_5)
-        broadcast_key_click(VK_6)
-    time.sleep(1.8)
 
-    if attack_index%3==0:
-        broadcast_key_click(VK_9)
-    elif attack_index%3==1:
-        broadcast_key_click(VK_TAB)
-    else:    
-        broadcast_key_click(VK_0)
-
-    if attack_index%6==0:
+        
         broadcast_key_click(VK_L)
-        time.sleep(1)
-        broadcast_key_click(VK_F)
-        time.sleep(1)
-    
-
+        time.sleep(0.05)
+        broadcast_key_click(KEY_NumpadMinus)
+        time.sleep(0.05)
+        
+        attack_with_toggle(0)
+        time.sleep(1.8)
+        attack_with_toggle(1)
+        time.sleep(1.8)
+        attack_with_toggle(2)
+        time.sleep(1.8)
+        attack_with_toggle(3)
+        time.sleep(1.8)
+        broadcast_key_click(VK_3)
+        time.sleep(1.8)
+        broadcast_key_click(VK_4)
+        time.sleep(1.8)
+        broadcast_key_click(VK_5)
+        time.sleep(1.8)
+        broadcast_key_click(KEY_NumpadMinus)
+        time.sleep(0.5)
+        broadcast_key_click(VK_0)
+        
 
 
 
