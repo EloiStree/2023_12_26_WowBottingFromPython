@@ -57,6 +57,7 @@ KEY_Numpad6 = 0x66
 KEY_Numpad7 = 0x67
 KEY_Numpad8 = 0x68
 KEY_Numpad9 = 0x69
+KEY_F = 0x46
 
 VK_LEFT = 0x25     # Left arrow
 VK_UP = 0x26       # Up arrow
@@ -64,7 +65,6 @@ VK_RIGHT = 0x27    # Right arrow
 VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
-VK_0 = 0x30       # Alphanumeric 1
 VK_1 = 0x31       # Alphanumeric 1
 VK_2 = 0x32       # Alphanumeric 1
 VK_3 = 0x33       # Alphanumeric 1
@@ -74,10 +74,7 @@ VK_6 = 0x36       # Alphanumeric 1
 VK_7 = 0x37       # Alphanumeric 1
 VK_8 = 0x38       # Alphanumeric 1
 VK_9 = 0x39        # Alphanumeric 1
-VK_L = 0x4C 		# Alphanumeric 1
-VK_F = 0x46 		# Alphanumeric 1
 
-VK_F = 0x46
 
 # We will store all the wow window when the script is launch here
 target_windows=[]
@@ -195,7 +192,7 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_click(VK_1)
+    broadcast_key_clickv(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
@@ -206,44 +203,34 @@ def attack_target_then_switch_post():
     global attack_index
     attack_index+=1
     
-    broadcast_key_click(VK_F)
-    time.sleep(1)
-
     broadcast_key_click(VK_4)
+    broadcast_key_click(VK_9)
+
+
+    if False:
+        print(" ")
+    elif attack_index%demonistbreak==0:
+        broadcast_key_click(demonistid)
+        time.sleep(1)
+        broadcast_key_click(petkey)
 
         
-    if attack_index%healCount==0:
+    elif attack_index%healCount==0:
         broadcast_key_click(healkey)
         
     elif attack_index%petCount==0:
         broadcast_key_click(petkey)
-
     else:
         broadcast_key_click(VK_1)
         broadcast_key_click(VK_2)
         broadcast_key_click(VK_3)
         broadcast_key_click(VK_5)
-        broadcast_key_click(VK_6)
+    broadcast_key_click(KEY_NumpadMinus)
     time.sleep(1.8)
-
-
-    if attack_index%3==0:
-        broadcast_key_click(VK_9)
-        broadcast_key_click(VK_TAB)
-    elif attack_index%3==1:
-        broadcast_key_click(VK_TAB)
-    else:    
-        broadcast_key_click(VK_0)
-        broadcast_key_click(VK_TAB)
-
-    if attack_index%6==0:
-        #broadcast_key_click(VK_L)
-        #time.sleep(1)
-        broadcast_key_click(VK_F)
-        #time.sleep(1)
+    broadcast_key_click(VK_TAB)
+    broadcast_key_click(VK_9)
+    broadcast_key_click(KEY_F)
     
-
-
 
 
 

@@ -77,7 +77,6 @@ VK_9 = 0x39        # Alphanumeric 1
 VK_L = 0x4C 		# Alphanumeric 1
 VK_F = 0x46 		# Alphanumeric 1
 
-VK_F = 0x46
 
 # We will store all the wow window when the script is launch here
 target_windows=[]
@@ -195,7 +194,7 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_click(VK_1)
+    broadcast_key_clickv(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
@@ -206,9 +205,6 @@ def attack_target_then_switch_post():
     global attack_index
     attack_index+=1
     
-    broadcast_key_click(VK_F)
-    time.sleep(1)
-
     broadcast_key_click(VK_4)
 
         
@@ -226,21 +222,18 @@ def attack_target_then_switch_post():
         broadcast_key_click(VK_6)
     time.sleep(1.8)
 
-
     if attack_index%3==0:
         broadcast_key_click(VK_9)
-        broadcast_key_click(VK_TAB)
     elif attack_index%3==1:
         broadcast_key_click(VK_TAB)
     else:    
         broadcast_key_click(VK_0)
-        broadcast_key_click(VK_TAB)
 
     if attack_index%6==0:
-        #broadcast_key_click(VK_L)
-        #time.sleep(1)
+        broadcast_key_click(VK_L)
+        time.sleep(1)
         broadcast_key_click(VK_F)
-        #time.sleep(1)
+        time.sleep(1)
     
 
 
