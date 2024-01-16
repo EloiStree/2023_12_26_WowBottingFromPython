@@ -438,27 +438,6 @@ def broadcast_key_release( keystroke):
 
 
 
-def repeat_keystroke():
-    try:
-        print("Press Ctrl+C to stop the script.")
-        
-        global target_windows
-        target_windows = get_windows_by_title(window_name)
-        print(len(target_windows))
-        for a in target_windows:
-            print(f"W:{a}")
-        while True:
-            #attack_target_then_switch()
-            attack_target_then_switch_post()
-            #attack_same_target_then_switch()
-                
-    
-
-    except KeyboardInterrupt:
-        print("\nScript stopped.")
-
-
-
 def try_push_key(message, press, release):
     hasBeenFind, key= find_key_in_array(message,key_to_exa_array)
     if(hasBeenFind):
@@ -473,48 +452,74 @@ def try_push_key(message, press, release):
             except ValueError:
                 print(f"{key} is not a valid integer for {message}")
 
+def get_windows_by_name(message):
+    print("Not coded yet:"+message)
+def get_windows_by_processesid(idSplitBySpace):
+    print("Not coded yet:"+idSplitBySpace)
+
+
+use_debug=False
 def handle_message(message):
 
+    global target_windows
     print(f"Received message: {message}")
     message=message.strip()
     
     
-    if message.startswith("s:"):
-        message = message[2:]
-        if message.startswith("window:"):
-            message = message[len("window:"):]
-            print(f"Reset target window to {message}")
+    if message.startswith("search:"):
+        message = message[len("search:"):]
+        if message.startswith("title:"):
+            message = message[len("title:"):]
+            if(use_debug):
+                print(f"Reset target window to {message} by title")
             target_windows = get_windows_by_title(message)
+    
+        if message.startswith("name:"):
+            message = message[len("name:"):]
+            if(use_debug):
+                print(f"Reset target window to {message} by name")
+            target_windows = get_windows_by_name(message)
+
+        if message.startswith("processid:"):
+            message = message[len("processid:"):]
+            if(use_debug):
+                print(f"Reset target window to {message} by process id")
+            target_windows = get_windows_by_name(message)
+            
     elif message.startswith("check"):
         message = message[5:]
         display_process_info()
-    elif message.startswith("true "):
-        message = message[5:]
-        if message.startswith("window:"):
-            message = message[len("window:"):]
-            print(f"Reset target window to {message}")
-            target_windows = get_windows_by_title(message)
-    else:
-       try_push_key(message, True, True)
+
+    elif message.startswith("press "):
+        message = message[len("press "):]
+        try_push_key(message, True, False)
+    elif message.startswith("release "):
+        message = message[len("release "):]
+        try_push_key(message, False, True)
+    elif message.startswith("click "):
+        message = message[len("click "):]
+        try_push_key(message, True, True)
+       
+    elif message.startswith("p "):
+        message = message[2:]
+        try_push_key(message, True, False)
+    elif message.startswith("r "):
+        message = message[2:]
+        try_push_key(message, False, True)
+    elif message.startswith("c "):
+        message = message[2:]
+        try_push_key(message, True, True)
                     
 
 def udp_server(host, port):
-    # Create a UDP socket
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    
-    # Bind the socket to a specific address and port
     server_socket.bind((host, port))
     
     print(f"UDP server listening on port {port}")
     
     while True:
-        # Receive data from the socket
         data, address = server_socket.recvfrom(1024)
-        
-        # Decode the received data
         message = data.decode('utf-8')
-        
-        # Perform an action based on the received message
         handle_message(message)
 
 
@@ -528,6 +533,7 @@ if __name__ == "__main__":
     
     try:
         while True:
+            time.sleep(10)
             pass
     except KeyboardInterrupt:
         print("Stopping UDP server...")
