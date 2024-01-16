@@ -65,6 +65,15 @@ function()
         
         if partbuff==true then
             
+
+
+          
+
+
+
+
+
+
             local buffs, i = { }, 1;
             local buff = UnitBuff("target", i);
             
@@ -78,10 +87,10 @@ function()
             end;
             
             if #buffs < 1 then
-                buffs = "Target has no buffs";
+                buffs = "";
             else
-                buffs[1] = "Target is buffed with: " .. buffs[1];
-                buffs = table.concat(buffs, ", ");
+                buffs[1] = "" .. buffs[1];
+                buffs = table.concat(buffs, " | ");
             end;
             dico.targetbufflist=buffs;
             
@@ -98,10 +107,10 @@ function()
             end;
             
             if #debuffs < 1 then
-                debuffs = "Target has no debuffs";
+                debuffs = "";
             else
-                debuffs[1] = "Target is debuffed with: " .. debuffs[1];
-                debuffs = table.concat(debuffs, ", ");
+                debuffs[1] = "" .. debuffs[1];
+                debuffs = table.concat(debuffs, " | ");
             end;
             dico.targetdebufflist=debuffs;
             
@@ -120,10 +129,10 @@ function()
             end;
             
             if #buffs < 1 then
-                buffs = "player has no buffs";
+                buffs = "";
             else
-                buffs[1] = "player is buffed with: " .. buffs[1];
-                buffs = table.concat(buffs, ", ");
+                buffs[1] = "" .. buffs[1];
+                buffs = table.concat(buffs, " | ");
             end;
             dico.bufflist=buffs;
             
@@ -140,10 +149,10 @@ function()
             end;
             
             if #debuffs < 1 then
-                debuffs = "player has no debuffs";
+                debuffs = "";
             else
-                debuffs[1] = "player is debuffed with: " .. debuffs[1];
-                debuffs = table.concat(debuffs, ", ");
+                debuffs[1] = "" .. debuffs[1];
+                debuffs = table.concat(debuffs, " | ");
             end;
             dico.debufflist=debuffs;
             
@@ -336,7 +345,7 @@ function()
     
     local timeTick =10
     local result = ""
-    result = "Tick:"..(math.floor( GetTime() / timeTick )) .. "\n"
+    result = "Tick Extract:"..(math.floor( GetTime() / timeTick )) .. "\n"
     result = result.."Time:"..GetTime().."\n"
     local keys = {}
     
