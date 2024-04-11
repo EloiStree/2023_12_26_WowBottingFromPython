@@ -3,6 +3,7 @@ import pyautogui
 import win32gui
 import win32con
 import ctypes
+import random
 
 # https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#virtual-key-codes-described
 
@@ -53,6 +54,10 @@ VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
 VK_1 = 0x31       # Alphanumeric 1
+VK_2 = 0x32       # Alphanumeric 1
+VK_3 = 0x33       # Alphanumeric 1
+VK_F = 0x46       # Alphanumeric 1
+VK_F1 = 0x70       # Alphanumeric 1
 
 
 # We will store all the wow window when the script is launch here
@@ -180,9 +185,24 @@ def attack_same_target_then_switch_post():
     broadcast_key_click(VK_TAB)
 
 def attack_target_then_switch_post():
+    broadcast_key_click(VK_TAB)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
-    broadcast_key_click(VK_TAB)
+    broadcast_key_click(VK_3)
+    broadcast_key_click(VK_1)
+    time.sleep(1.8)
+    random_num = random.randint(1, 30)
+    random_num_heal = random.randint(1, 10)
+    if random_num == 1:
+        broadcast_key_click(VK_SPACE)
+        time.sleep(1)
+        broadcast_key_click(VK_F)
+        time.sleep(1)
+    if random_num_heal == 2:
+        broadcast_key_click(VK_F1)
+        broadcast_key_click(VK_2)
+        time.sleep(1.8)
+    
 
 
 
