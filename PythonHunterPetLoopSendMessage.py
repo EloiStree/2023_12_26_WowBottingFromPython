@@ -191,18 +191,20 @@ def attack_same_target_then_switch_post():
     broadcast_key_click(VK_TAB)
 def attack_target_then_switch_post():
     broadcast_key_click(VK_TAB)    
-    broadcast_key_click(VK_1)
-    broadcast_key_click(VK_2)
-    broadcast_key_click(VK_3)
-    broadcast_key_click(VK_4)
+    broadcast_key_click(VK_1)#Beast Attack
+    broadcast_key_click(VK_2)#Hunter Attack
+    broadcast_key_click(VK_3)#PET ATTACK
     time.sleep(1.8)
     broadcast_key_click(VK_9)
-    broadcast_key_click(VK_2)
-    broadcast_key_click(VK_3)
-    broadcast_key_click(VK_1)
-    broadcast_key_click(VK_4)
+    broadcast_key_click(VK_2)#Hunter Attack
+    broadcast_key_click(VK_1)#Beast Attack
+    broadcast_key_click(VK_3)#PET ATTACK
     time.sleep(1.8)
-    broadcast_key_click(VK_6)
+    broadcast_key_click(VK_6)# REVIVE PET
+    time.sleep(0.1)
+    broadcast_key_click(VK_4)# FULL HEAL
+    time.sleep(0.1)
+    broadcast_key_click(VK_5)# PET HEAL
     time.sleep(0.1)
     random_num = random.randint(1, 30)
     random_num_heal = random.randint(1, 4)
