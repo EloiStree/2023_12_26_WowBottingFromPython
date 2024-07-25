@@ -192,40 +192,43 @@ def attack_same_target_then_switch_post():
     broadcast_key_click(VK_TAB)
     
 def attack_target_then_switch_post():
-    broadcast_key_click(VK_TAB)    
-    broadcast_key_click(VK_1)#Beast Attack
-    broadcast_key_click(VK_2)#Hunter Attack
-    broadcast_key_click(VK_3)#PET ATTACK
+    # /petdismiss
+    # /petdismiss
+    broadcast_key_click(VK_1)#Call Pet
+    time.sleep(1)
+    broadcast_key_click(VK_9)# Focus Boris    
+    broadcast_key_click(VK_8)# Focus Boris    
+    broadcast_key_click(VK_3)#Pet Attack
+    time.sleep(10)
+    for i in range(0,4):
+        broadcast_key_click(VK_8)# Focus Boris   
+        time.sleep(1.8)
+        broadcast_key_click(VK_3)#Pet Attack
+        time.sleep(1.8)
+        broadcast_key_click(VK_9)# Focus Boris   
+        time.sleep(1.8)
+        broadcast_key_click(VK_3)#Pet Attack
+    
+   
     time.sleep(1.8)
-    broadcast_key_click(VK_9)
-    broadcast_key_click(VK_2)#Hunter Attack
-    broadcast_key_click(VK_1)#Beast Attack
-    broadcast_key_click(VK_3)#PET ATTACK
+    broadcast_key_click(VK_2) #Pet Dissmi    
     time.sleep(1.8)
-    broadcast_key_click(VK_6)# REVIVE PET
-    time.sleep(0.1)
-    broadcast_key_click(VK_4)# FULL HEAL
-    time.sleep(0.1)
-    broadcast_key_click(VK_5)# PET HEAL
-    time.sleep(0.1)
-    random_num = random.randint(1, 30)
-    random_num_heal = random.randint(1, 4)
+    broadcast_key_click(VK_6) #Pet rez    
+    time.sleep(13)
+    broadcast_key_click(VK_1)#Call Pet
+    time.sleep(2)
+    broadcast_key_click(VK_4) #Pet rez    
+    random_num = random.randint(1, 5)
     if random_num == 1:
         broadcast_key_click(VK_SPACE)
         time.sleep(1)
-        broadcast_key_click(VK_F)
-        time.sleep(1)
-        broadcast_key_click(VK_F)
-    if random_num_heal == 2:
-        broadcast_key_click(VK_F1)
-        broadcast_key_click(VK_2)
-        time.sleep(0.6)
-        broadcast_key_click(VK_5)
-        time.sleep(1.8)
-        broadcast_key_click(VK_F)
-        time.sleep(1.8)
-
-
+    for i in range(0,4):
+        broadcast_key_click(VK_8)
+        time.sleep(5)
+        broadcast_key_click(VK_1)
+        time.sleep(5)
+   #l time.sleep(40)
+    # repop is 60 second for boris when death
 
 def repeat_keystroke():
     try:
