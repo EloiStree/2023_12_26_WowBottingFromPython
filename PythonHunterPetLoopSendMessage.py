@@ -3,6 +3,7 @@ import pyautogui
 import win32gui
 import win32con
 import ctypes
+import random
 
 # https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#virtual-key-codes-described
 
@@ -12,18 +13,6 @@ window_name="World of Warcraft"
 
 useRealKey=False
 
-
-attack_index=0
-
-demonistbreak=61
-demonistid=0x30
-
-
-healCount=8
-healkey=0x36
-
-petCount=30
-petkey=0x37
 
 # Constants
 # Will be use to press an release
@@ -42,6 +31,7 @@ VK_SPACE = 0x20    # Space
 VK_TAB = 0x09      # Tab
 VK_ENTER = 0x0D    # Enter
 VK_ESCAPE = 0x1B   # Escape
+VK_F = 0x46        # F
 
 KEY_ArrowLeft = 0x25
 KEY_ArrowUp = 0x26
@@ -64,7 +54,6 @@ VK_RIGHT = 0x27    # Right arrow
 VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
-VK_0 = 0x30       # Alphanumeric 1
 VK_1 = 0x31       # Alphanumeric 1
 VK_2 = 0x32       # Alphanumeric 1
 VK_3 = 0x33       # Alphanumeric 1
@@ -73,11 +62,10 @@ VK_5 = 0x35       # Alphanumeric 1
 VK_6 = 0x36       # Alphanumeric 1
 VK_7 = 0x37       # Alphanumeric 1
 VK_8 = 0x38       # Alphanumeric 1
-VK_9 = 0x39        # Alphanumeric 1
-VK_L = 0x4C 		# Alphanumeric 1
-VK_F = 0x46 		# Alphanumeric 1
+VK_9 = 0x39       # Alphanumeric 1
+VK_F = 0x46       # Alphanumeric 1
+VK_F1 = 0x70       # Alphanumeric 1
 
-VK_F = 0x46
 
 # We will store all the wow window when the script is launch here
 target_windows=[]
@@ -202,48 +190,40 @@ def attack_same_target_then_switch_post():
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
+    
 def attack_target_then_switch_post():
-    global attack_index
-    attack_index+=1
-    
-    broadcast_key_click(VK_F)
-    time.sleep(1)
-
-    broadcast_key_click(VK_4)
-
-        
-    if attack_index%healCount==0:
-        broadcast_key_click(healkey)
-        
-    elif attack_index%petCount==0:
-        broadcast_key_click(petkey)
-
-    else:
-        broadcast_key_click(VK_1)
-        broadcast_key_click(VK_2)
-        broadcast_key_click(VK_3)
-        broadcast_key_click(VK_5)
-        broadcast_key_click(VK_6)
+    broadcast_key_click(VK_TAB)    
+    broadcast_key_click(VK_1)#Beast Attack
+    broadcast_key_click(VK_2)#Hunter Attack
+    broadcast_key_click(VK_3)#PET ATTACK
     time.sleep(1.8)
-
-
-    if attack_index%3==0:
-        broadcast_key_click(VK_9)
-        broadcast_key_click(VK_TAB)
-    elif attack_index%3==1:
-        broadcast_key_click(VK_TAB)
-    else:    
-        broadcast_key_click(VK_0)
-        broadcast_key_click(VK_TAB)
-
-    if attack_index%6==0:
-        #broadcast_key_click(VK_L)
-        #time.sleep(1)
+    broadcast_key_click(VK_9)
+    broadcast_key_click(VK_2)#Hunter Attack
+    broadcast_key_click(VK_1)#Beast Attack
+    broadcast_key_click(VK_3)#PET ATTACK
+    time.sleep(1.8)
+    broadcast_key_click(VK_6)# REVIVE PET
+    time.sleep(0.1)
+    broadcast_key_click(VK_4)# FULL HEAL
+    time.sleep(0.1)
+    broadcast_key_click(VK_5)# PET HEAL
+    time.sleep(0.1)
+    random_num = random.randint(1, 30)
+    random_num_heal = random.randint(1, 4)
+    if random_num == 1:
+        broadcast_key_click(VK_SPACE)
+        time.sleep(1)
         broadcast_key_click(VK_F)
-        #time.sleep(1)
-    
-
-
+        time.sleep(1)
+        broadcast_key_click(VK_F)
+    if random_num_heal == 2:
+        broadcast_key_click(VK_F1)
+        broadcast_key_click(VK_2)
+        time.sleep(0.6)
+        broadcast_key_click(VK_5)
+        time.sleep(1.8)
+        broadcast_key_click(VK_F)
+        time.sleep(1.8)
 
 
 
@@ -257,8 +237,9 @@ def repeat_keystroke():
         for a in target_windows:
             print(f"W:{a}")
         while True:
-            #attack_target_then_switch()
             attack_target_then_switch_post()
+            #attack_target_then_switch()
+            #attack_target_then_switch_post()
             #attack_same_target_then_switch()
                 
     

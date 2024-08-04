@@ -3,6 +3,7 @@ import pyautogui
 import win32gui
 import win32con
 import ctypes
+import random
 
 # https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#virtual-key-codes-described
 
@@ -53,7 +54,18 @@ VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
 VK_1 = 0x31       # Alphanumeric 1
+
 VK_F = 0x46       # Alphanumeric 1
+
+VK_2 = 0x32       # Alphanumeric 1
+VK_3 = 0x33       # Alphanumeric 1
+VK_4 = 0x34       # Alphanumeric 1
+VK_5 = 0x35       # Alphanumeric 1
+VK_6 = 0x36       # Alphanumeric 1
+VK_7 = 0x37       # Alphanumeric 1
+VK_8 = 0x38       # Alphanumeric 1
+VK_9 = 0x39       # Alphanumeric 1
+VK_F1 = 0x70       # Alphanumeric 1
 
 
 # We will store all the wow window when the script is launch here
@@ -172,7 +184,7 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_clickv(VK_1)
+    broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
@@ -180,11 +192,35 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
 def attack_target_then_switch_post():
+    broadcast_key_click(VK_TAB)    
     broadcast_key_click(VK_1)
+    broadcast_key_click(VK_2)
+    broadcast_key_click(VK_3)
+    broadcast_key_click(VK_4)
     time.sleep(1.8)
-    broadcast_key_click(VK_F)
+
+    broadcast_key_click(VK_9)
+    broadcast_key_click(VK_2)
+    broadcast_key_click(VK_3)
+    broadcast_key_click(VK_1)
+    broadcast_key_click(VK_4)
+    time.sleep(1.8)
+    broadcast_key_click(VK_6)
     time.sleep(0.1)
-    broadcast_key_click(VK_TAB)
+    random_num = random.randint(1, 30)
+    random_num_heal = random.randint(1, 4)
+    if random_num == 1:
+        broadcast_key_click(VK_SPACE)
+        time.sleep(1)
+        broadcast_key_click(VK_F)
+        time.sleep(1)
+    if random_num_heal == 2:
+        broadcast_key_click(VK_F1)
+        broadcast_key_click(VK_2)
+        time.sleep(0.6)
+        broadcast_key_click(VK_5)
+        time.sleep(1.8)
+
 
 
 
@@ -198,8 +234,9 @@ def repeat_keystroke():
         for a in target_windows:
             print(f"W:{a}")
         while True:
-            #attack_target_then_switch()
             attack_target_then_switch_post()
+            #attack_target_then_switch()
+            #attack_target_then_switch_post()
             #attack_same_target_then_switch()
                 
     
