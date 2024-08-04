@@ -53,6 +53,8 @@ VK_DOWN = 0x28     # Down arrow
 
 VK_NUMPAD1 = 0x61  # Numpad 1
 VK_1 = 0x31       # Alphanumeric 1
+VK_2 = 0x32       # Alphanumeric 1
+VK_3 = 0x33       # Alphanumeric 1
 VK_F = 0x46       # Alphanumeric 1
 
 
@@ -172,15 +174,28 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_clickv(VK_1)
+    broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_TAB)
+
+attack_count=0
 def attack_target_then_switch_post():
+    global attack_count
+    attack_count+=1
+    #if(attack_count%2==0):
+    #    broadcast_key_click(VK_1)
+    #else:
+    #    broadcast_key_click(VK_2)
+    
     broadcast_key_click(VK_1)
+    broadcast_key_click(VK_3)
+    time.sleep(1.8)
+    broadcast_key_click(VK_2)
+    broadcast_key_click(VK_3)
     time.sleep(1.8)
     broadcast_key_click(VK_F)
     time.sleep(0.1)
