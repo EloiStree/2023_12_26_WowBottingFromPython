@@ -3,7 +3,8 @@ import pyautogui
 import win32gui
 import win32con
 import ctypes
-
+#/targetexact Silent Boris
+#/targetexact Lindel the Snatcher
 # https://learn.microsoft.com/en-us/windows/win32/inputdev/about-keyboard-input#virtual-key-codes-described
 
 keystroke="1"
