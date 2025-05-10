@@ -193,7 +193,7 @@ def attack_same_target_then_switch_post():
     time.sleep(1.8)
     broadcast_key_click(VK_1) 
     time.sleep(1.8)
-    broadcast_key_clickv(VK_1)
+    broadcast_key_click(VK_1)
     time.sleep(1.8)
     broadcast_key_click(VK_1)
     time.sleep(1.8)
